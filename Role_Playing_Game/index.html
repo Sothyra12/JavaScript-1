@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG - Dragon Repeller</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game">
+        <div id="stats">
+            <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+            <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
+            <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+        </div>
+        <div id="controls">
+            <button id="button1">Go to store</button>
+            <button id="button2">Go to cave</button>
+            <button id="button3">Fight dragon</button>
+        </div>
+        <div id="monsterStats">
+            <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+            <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+        </div>
+        <div id="text">
+            Welcome to Dragon Repeller.
+            You must defeat the dragon that is preventing people from leaving the town.
+            You are in the town square. Where do you want to go? Use the buttons above.
+        </div>
+    </div>
+
+    <!-- give your now empty script element a src attribute set to ./script.js. -->
+    <script src="./script.js"></script>
+</body>
+</html>
+
+<!--
+JavaScript interacts with the HTML using the Document Object Model, or DOM.
+The DOM is a tree of objects that represents the HTML.
+You can access the HTML using the document object, which represents your entire HTML document.
+
+One method for finding specific elements in your HTML is using the querySelector() method.
+The querySelector() method takes a CSS selector as an argument and returns the first element
+that matches that selector. For example, to find the <h1> element in your HTML, you would write:
+let h1 = document.querySelector("h1");
+
+Remember that CSS id selectors are prefixed with a #.
+let button1 = document.querySelector("#button1");
+
+--------------------------------------------------------------------------------
+We have run into a slight problem. You are trying to query your page for a button element,
+but your script tag is in the head of your HTML.
+This means your code runs before the browser has finished reading the HTML,
+and your document.querySelector() will not see the button -
+because the browser hasn't processed it yet.
+
+To fix this, move your script element out of the head element, and place it at the end of
+your body element (just before the closing </body> tag.)
+-->
