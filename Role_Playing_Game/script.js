@@ -59,17 +59,17 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 function update(location){
-  button1.innerText = "Go to store";
-    button2.innerText = "Go to cave";
-    button3.innerText = "Fight dragon";
-    button1.onclick = goStore;
-    button2.onclick = goCave;
-    button3.onclick = fightDragon;
-    text.innerText = "You are in the town square. You see a sign that says \"Store\".";
+  button1.innerText = location["button text"][0];
+  button2.innerText = location["button text"][1];
+  button3.innerText = location["button text"][2];
+  button1.onclick = location["button functions"][0];
+  button2.onclick = location["button functions"][1];
+  button3.onclick = location["button functions"][2];
+  text.innerText = location.text("You are in the town square. You see a sign that says \"Store\".");
 }
 
 function goTown() {
-
+  update();
 }
 /*
 The innerText property controls the text that appears in an HTML element. For example:
@@ -82,13 +82,7 @@ info.innerText = "Hello World";
 The following example would change the text of the p element from Demo content to Hello World.
 */
 function goStore() {
-    button1.innerText = "Buy 10 health (10 gold)";
-    button2.innerText = "Buy weapon (30 gold)";
-    button3.innerText = "Go to town square";
-    button1.onclick = buyHealth;
-    button2.onclick = buyWeapon;
-    button3.onclick = goTown;
-    text.innerText = "You enter the store.";
+  update(locations[1]);
 }
 
 function goCave() {
@@ -100,7 +94,10 @@ function fightDragon() {
 }
 
 function buyHealth() {
-
+  gold -= 10;
+  health += 10;
+  gold.innerText = gold;
+  health.innerText = health;
 }
 
 function buyWeapon() {
@@ -209,4 +206,17 @@ const spaceObj = {
 };
 
 spaceObj["Space Name"]; // "Kirk"
+*/
+
+
+/*
+Pass in only the first element of the locations array by adding [0] at the end of the variable.
+For example: myFunction(arg[0]);.
+
+This is called bracket notation. Values in an array are accessed by index.
+Indices are numerical values and start at 0 - this is called zero-based indexing.
+arg[0] would be the first element in the arg array.
+e.g. function goTown() {
+  update(locations[0]);
+}
 */
