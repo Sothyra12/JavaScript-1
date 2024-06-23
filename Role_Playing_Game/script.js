@@ -125,7 +125,8 @@ function buyHealth() {
 }
 
 function buyWeapon() {
-  if (gold >= 30) {
+  if (currentWeaponIndex < 3) {
+    if (gold >= 30) {
     gold -= 30;
     currentWeaponIndex++;
     goldText.innerText = gold;
@@ -135,6 +136,7 @@ function buyWeapon() {
     text.innerText += " In your inventory you have: " + inventory;
   } else {
     text.innerText = "You do not have enough gold to buy a weapon.";
+    }
   }
 }
 /*
