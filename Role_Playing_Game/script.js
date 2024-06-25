@@ -28,6 +28,12 @@ const locations = [
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
     "button functions": [fightSlime, fightBeast, goTown],
     text: "You enter the cave. You see some monsters."
+  },
+  {
+    name: "fight",
+    "button text": ["Attack", "Dodge", "Run"],
+    "button functions": [attack, dodge, goTown],
+    text: "You are fighting a monster."
   }
 ];
 
@@ -42,7 +48,6 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
-
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
@@ -50,6 +55,11 @@ const weapons = [
   { name: 'sword', power: 100 }
 ];
 
+const monsters = [
+  {name: "slime", level: 2, health: 15},
+  {name: "fanged beast", level: 8, health: 60},
+  {name: "dragon", level: 20, health: 300}
+];
 /*
 button1 represents your first button element.
 These elements have a special property called onclick,
@@ -102,15 +112,37 @@ function goCave() {
 }
 
 function fightDragon() {
-    console.log("Fighting dragon.");
+  fighting = 2;
+  goFight();
 }
 
 function fightSlime() {
-
+  fighting = 0;
+  goFight();
 }
 
 function fightBeast() {
+  fighting = 1;
+  goFight();
+}
 
+function attack(){
+  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
+  health -= monsters[fighting].level;
+  monsterHealth -= weapons[currentWeaponIndex].power;
+}
+
+function dodge(){
+
+}
+
+function goFight() {
+  update(locations[3]);
+  monsterHealth = monsters[fighting].health;
+  monsterStats.style.display = "block";
+  monsterName.innerText = monsters[fighting].name;
+  monsterHealthText.innerText = monsterHealth;
 }
 
 function buyHealth() {
@@ -140,7 +172,19 @@ function buyWeapon() {
   } else {
     text.innerText="You already have the most powerful weapon!";
     button2.innerText="Sell weapon for 15 gold";
-    button2.onclick = sellWeapon;
+    button2.onclick = sellWeapon();
+  }
+}
+
+function sellWeapon() {
+  if (inventory.length > 1) {
+    gold += 15;
+    goldText.innerText = gold;
+    let currentWeapon = inventory.shift();
+    text.innerText = "You sold a " + currentWeapon + ".";
+    text.innerText += " In your inventory you have: " + inventory;
+  } else {
+    text.innerText = "Don't sell your only weapon!";
   }
 }
 /*
@@ -259,4 +303,17 @@ arg[0] would be the first element in the arg array.
 e.g. function goTown() {
   update(locations[0]);
 }
+*/
+
+/*
+Step 118
+By default, the HTML element that shows the monster's stats has been hidden with CSS. When the player clicks the "Fight dragon" button, the monster's stats should be displayed. You can accomplish this by using the style and display properties on the monsterStats element.
+
+The style property is used to access the inline style of an element and the display property is used to set the visibility of an element.
+
+Here is an example of how to update the display for a paragraph element:
+
+Example Code
+const paragraph = document.querySelector('p');
+paragraph.style.display = 'block';
 */
