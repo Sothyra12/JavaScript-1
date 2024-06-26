@@ -34,6 +34,30 @@ const locations = [
     "button text": ["Attack", "Dodge", "Run"],
     "button functions": [attack, dodge, goTown],
     text: "You are fighting a monster."
+  },
+  {
+    name: "kill monster",
+   "button text": ["Go to town square", "Go to town square", "Go to town square"],
+   "button functions": [goTown, goTown, easterEgg],
+   text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+ },
+ {
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. &#x2620;"
+ },
+ {
+   name: "win",
+   "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+   "button functions": [restart, restart, restart],
+   text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;"
+ },
+ {
+    name: "easter egg",
+    "button text": ["2", "8", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 ];
 
@@ -81,13 +105,14 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 function update(location) {
+  onsterStats.style.display="none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
-  text.innerText = location.text;
+  text.innerHTML = location.text;
 }
 
 function goTown() {
@@ -129,12 +154,104 @@ function fightBeast() {
 function attack(){
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText += " You attack it with your " + weapons[currentWeaponIndex].name + ".";
-  health -= monsters[fighting].level;
-  monsterHealth -= weapons[currentWeaponIndex].power;
+  health -= getMonsterAttackValue(monsters[fighting].level);
+  if (isMonsterHit()) {
+    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+  } else {
+    text.innerText += " You miss."
+  }
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+  if (health <= 0) {
+    lose();
+  } else if (monsterHealth <= 0){
+    defeatMonster();
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
+  }
+  if (Math.random() <= .1 && inventory.length !== 1) {
+    text.innerText += " Your " + inventory.pop() + " breaks.";
+    currentWeaponIndex--;
+  }
+}
+
+function getMonsterAttackValue(level) {
+  const hit = (level * 5) - (Math.floor(Math.random() * xp));
+  console.log(hit);
+  return hit > 0 ? hit : 0;
+}
+
+function isMonsterHit() {
+  return Math.random() > .2 || health < 20;
+}
+
+function defeatMonster() {
+  gold += Math.floor(monsters[fighting].level * 6.7);
+  xp += monsters[fighting].level;
+  goldText.innerText = gold;
+  xpText.innerText = xp;
+  update(locations[4]);
+}
+
+function lose() {
+  update(locations[5]);
+}
+
+function winGame() {
+  update(locations[6]);
+}
+
+function easterEgg() {
+  update(locations[7]);
+}
+
+function pick(guess) {
+  const numbers = [];
+  while (numbers.length < 10) {
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+    text.innerText += "Right! You win 20 gold!";
+    gold += 20;
+    goldText.innerText = gold;
+  } else {
+    text.innerText += "Wrong! You lose 10 health!";
+    health -= 10;
+    healthText.innerText = health;
+    if (health <= 0) {
+      lose();
+    }
+  }
+}
+
+function pickTwo() {
+  pick(2);
+}
+function pickEight() {
+  pick(8);
+}
+
+function restart() {
+  xp = 0;
+  health = 100;
+  gold = 50;
+  currentWeaponIndex = 0;
+  inventory = ["stick"];
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+  goTown();
 }
 
 function dodge(){
-
+  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
 }
 
 function goFight() {
@@ -324,4 +441,60 @@ The Math object in JavaScript contains static properties and methods for mathema
 Using these, you can generate a random number within a range. For example, this generates a random number between 1 and 5: Math.floor(Math.random() * 5) + 1;.
 
 Following this pattern, use the addition operator (+) to add a random number between 1 and the value of xp to your monsterHealth -= weapons[currentWeaponIndex].power.
+*/
+
+/*
+In order for the &#x2620; emoticon text to properly display on the page, you will need to use the innerHTML property.
+
+The innerHTML property allows you to access or modify the content inside an HTML element using JavaScript.
+
+Here is an example of updating the content for this paragraph element using the innerHTML property.
+
+Example Code
+<p id="demo">This is a paragraph.</p>
+Example Code:
+document.querySelector("#demo").innerHTML = "Hello, innerHTML!";
+*/
+
+/*
+If you play the game in its current state you might notice a bug. If your xp is high enough, the getMonsterAttackValue function will return a negative number, which will actually add to your total health when fighting a monster! You can fix this issue by using a ternary operator to ensure negative values are not returned.
+
+The ternary operator is a conditional operator and can be used as a one-line if-else statement. The syntax is: condition ? expressionIfTrue : expressionIfFalse.
+
+Here is an example of returning a value using an if-else statement and a refactored example using a ternary operator:
+
+Example Code:
+// if-else statement
+if (score > 0) {
+  return score
+} else {
+  return default_score
+}
+
+// ternary operator
+return score > 0 ? score : default_score
+
+----------------------------------------------
+Step 153
+The player should hit if either Math.random() > .2 or if the player's health is less than 20.
+
+At the end of your return statement, use the logical OR operator || and check if health is less than 20.
+
+The logical OR operator will use the first value if it is truthy – that is, anything apart from NaN, null, undefined, 0, -0, 0n, "", and false. Otherwise, it will use the second value.
+
+For example: num < 10 || num > 20.
+
+
+----------------------------------------------
+The .includes() method determines if an array contains an element and will return either true or false.
+
+Here is an example of the .includes() syntax:
+
+Example Code
+const numbersArray = [1, 2, 3, 4, 5]
+const number = 3
+
+if (numbersArray.includes(number)) {
+  console.log("The number is in the array.")
+}
 */
