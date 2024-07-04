@@ -60,10 +60,30 @@ In this example, the replace method is used to replace all instances of the lett
 Example Code
 "hello".replace(/l/g, "1");
 */
-
-
 function cleanInputString(str) {
+    //console.log("original string: ", str);
     const regex = /[+-\s]/g;
     //Use your regex to replace all instances of +, -, and a space in str with an empty string. Return this value.
     return str.replace(regex, '');
+}
+//console.log(cleanInputString("+-99"));
+
+
+/*
+In HTML, number inputs allow for exponential notation (such as 1e10). You need to filter those out.
+Start by creating a function called isInvalidInput – it should take a single str parameter.
+
+*The e in a number input can also be an uppercase E.
+Regex has a flag for this, however – the i flag, which stands for "insensitive".
+Example Code
+/Hello/i
+The following regex would match hello, Hello, HELLO, and even hElLo because of the i flag.
+This flag makes your pattern case-insensitive.
+
+*Number inputs only allow the e to occur between two digits.
+To match any number, you can use the character class [0-9].
+This will match any digit between 0 and 9.
+*/
+function isInvalidInput(str) {
+    const regex = /[0-9]e[0-9]/i;
 }
