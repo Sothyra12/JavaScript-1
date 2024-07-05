@@ -83,7 +83,24 @@ This flag makes your pattern case-insensitive.
 *Number inputs only allow the e to occur between two digits.
 To match any number, you can use the character class [0-9].
 This will match any digit between 0 and 9.
+
+*The + modifier in a regex allows you to match a pattern that occurs one or more times.
+To match your digit pattern one or more times, add a plus after each of the digit character classes.
+For example: [0-9]+.
+
+*There is a shorthand character class to match any digit: \d. Replace your [0-9] character classes
+with this shorthand.
+
+
+*Strings have a .match() method, which takes a regex argument.
+.match() will return an array of match results – containing either the first match,
+or all matches if the global flag is used.
+Example Code
+const str = 'example string';
+const regex = /example/;
+const result = str.match(regex); // Returns ['example']
 */
 function isInvalidInput(str) {
-    const regex = /[0-9]e[0-9]/i;
+    const regex = /[0-9]+e[0-9]+/i;
+    return str.match(regex);
 }
