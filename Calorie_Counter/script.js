@@ -104,3 +104,6 @@ function isInvalidInput(str) {
     const regex = /[0-9]+e[0-9]+/i;
     return str.match(regex);
 }
+
+
+console.log(isInvalidInput("1e3"));
