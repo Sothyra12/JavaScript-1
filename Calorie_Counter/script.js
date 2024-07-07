@@ -105,5 +105,46 @@ function isInvalidInput(str) {
     return str.match(regex);
 }
 
-
+//tested invalid input
 console.log(isInvalidInput("1e3"));
+/*
+When you open the console, you should see this result:
+Example Code
+[ '1e3', index: 0, input: '1e3', groups: undefined ]
+The match method returns an array with any matches found in the string.
+Here is a complete breakdown of that information:
+"1e3" is the matched value against the /\d+e\d+/i regex.
+index: 0 is the index of the matched value in the string.
+input: '1e3' is the original string that was matched.
+groups: undefined are the matched groups, which are not used in this case.
+*/
+
+
+//tested valid input
+console.log(isInvalidInput("10"));
+/*
+When you open the console, you should see the result of null. T
+he match method returns null when no match is found. In this case,
+the isInvalidInput function should return null when the input is a valid number without any scientific notation.
+null in JavaScript is a special primitive that represents the intentional absence of a value.
+In a boolean context, null is considered falsy which evaluates to false in a conditional statement.
+*/
+
+
+/*
+JavaScript has a feature called template literals,
+which allow you to interpolate variables directly within a string.
+Template literals are denoted with backticks ``, as opposed to single or double quotes.
+Variables can be passed in to a template literal by surrounding the variable with ${} –
+the value of the variable will be inserted into the string.
+For example:
+Example Code
+const name = "Naomi";
+const templateLiteral = `Hello, my name is ${name}~!`;
+console.log(templateLiteral);
+*/
+
+function addEntry() {
+    const targetId = '#' + entryDropdown.value;
+    const targetInputContainer = document.querySelector(`#${targetId} .input-container`);
+}
