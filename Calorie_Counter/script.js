@@ -150,10 +150,23 @@ The querySelectorAll() method returns a NodeList of all the elements that match 
 A NodeList is an array-like object, so you can access the elements using bracket notation.
 Declare an entryNumber variable and give it the value of targetInputContainer.querySelectorAll().
 You do not need to pass an argument to the query selector yet.
+
+*Each entry will have a text input for the entry's name,
+and a number input for the calories. To get a count of the number of entries,
+you can query by text inputs. Note that you cannot query by number inputs,
+as you have an extra number input for the user's calorie budget.
+Pass the string input[type="text"] to the querySelectorAll() method.
+Remember that you will need to use single quotes for your string, so that you can use double quotes within.
+This will return a NodeList of all the text inputs in the form. You can then access the length
+property of the NodeList to get the number of entries. Do this on the same line.
+function addEntry() {
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
+}
+
 */
 
 function addEntry() {
-    const targetId = '#' + entryDropdown.value;
-    const targetInputContainer = document.querySelector(`#${targetId} .input-container`);
-    const entryNumber = targetInputContainer.querySelectorAll();
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
 }
