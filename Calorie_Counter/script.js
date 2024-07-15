@@ -167,10 +167,18 @@ function addEntry() {
 *Now you need to build your dynamic HTML string to add to the webpage.
 Declare a new HTMLString variable, and assign it an empty template literal string.
 
+*Give your label element a for attribute with the value X-#-name,
+where X is the value of the entryDropdown element and # is the value of
+entryNumber. Remember that HTML attributes should be wrapped in double quotes.
 */
 
 function addEntry() {
   const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
   const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
-  let HTMLString = `<label for="entry${entryNumber}">Entry ${entryNumber} Name:</label>`;
+  let HTMLString = `
+  <label for="${entryDropdown.value}-${entryNumber}-name">Entry ${entryNumber} Name</label>
+  <input type="text" placeholder="Name" id="${entryDropdown.value}-${entryNumber}-name"></input>
+  <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
+  <input type="number" min="0" placeholder="Calories" id="${entryDropdown.value}-${entryNumber}-calories"></input>
+  `;
 }
