@@ -170,6 +170,29 @@ Declare a new HTMLString variable, and assign it an empty template literal strin
 *Give your label element a for attribute with the value X-#-name,
 where X is the value of the entryDropdown element and # is the value of
 entryNumber. Remember that HTML attributes should be wrapped in double quotes.
+
+
+
+**To see your new HTML content for the targetInputContainer,
+you will need to use the innerHTML property.
+
+The innerHTML property sets or returns the HTML content inside an element.
+Here is a form element with a label and input element nested inside.
+Example Code
+<form id="form">
+  <label for="first-name">First name</label>
+  <input id="first-name" type="text">
+</form>
+
+**If you want to add another label and input element inside the form,
+then you can use the innerHTML property as shown below:
+Example Code
+const formElement = document.getElementById("form");
+const formContent = `
+  <label for="last-name">Last name</label>
+  <input id="last-name" type="text">
+`;
+formElement.innerHTML += formContent;
 */
 
 function addEntry() {
@@ -181,4 +204,11 @@ function addEntry() {
   <label for="${entryDropdown.value}-${entryNumber}-calories">Entry ${entryNumber} Calories</label>
   <input type="number" min="0" placeholder="Calories" id="${entryDropdown.value}-${entryNumber}-calories"></input>
   `;
+  targetInputContainer.innerHTML += HTMLString;
 }
+
+
+/*
+
+*/
+
