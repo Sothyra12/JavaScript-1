@@ -209,6 +209,21 @@ function addEntry() {
 
 
 /*
+Step 52
+In the Role Playing Game project, you learned how to set a button's behavior by editing its onclick property. You can also edit an element's behavior by adding an event listener.
+
+The following example uses the addEventListener method to add a click event to a button. When the button is clicked, the printName function is called.
+
+Example Code
+<button class="btn">Print name</button>
+Example Code
+const button = document.querySelector('.btn');
+function printName() {
+  console.log("Jessica");
+}
+button.addEventListener('click', printName);
+
 
 */
+addEntryButton.addEventListener('click', addEntry);
 
