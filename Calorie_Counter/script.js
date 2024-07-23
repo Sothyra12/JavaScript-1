@@ -203,6 +203,13 @@ before adding the new entry to the page.
 To fix this, update your entryNumber variable to be the value of the length of the query plus 1.
 Add this on your declaration line, not in your template strings.
 
+
+**Your other bug occurs if you add a Breakfast entry, fill it in,
+then add a second Breakfast entry. You'll see that the values you added disappeared.
+This is because you are updating innerHTML directly, which does not preserve your input content.
+Change your innerHTML assignment to use the insertAdjacentHTML() method of targetInputContainer instead.
+Do not pass any arguments yet.
+
 */
 
 function addEntry() {
@@ -218,7 +225,8 @@ function addEntry() {
     id="${entryDropdown.value}-${entryNumber}-calories"
     placeholder="Calories"
   />`;
-  targetInputContainer.innerHTML += HTMLString;
+  //targetInputContainer.innerHTML += HTMLString;
+  targetInputContainer.insertAdjacentHTML();
 }
 
 
