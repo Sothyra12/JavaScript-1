@@ -210,6 +210,13 @@ This is because you are updating innerHTML directly, which does not preserve you
 Change your innerHTML assignment to use the insertAdjacentHTML() method of targetInputContainer instead.
 Do not pass any arguments yet.
 
+**The insertAdjacentHtml method takes two arguments.
+The first argument is a string that specifies the position of the inserted element.
+The second argument is a string containing the HTML to be inserted.
+For the first argument, pass the string "beforeend"
+to insert the new element as the last child of targetInputContainer.
+For the second argument, pass your HTMLString variable.
+
 */
 
 function addEntry() {
@@ -226,7 +233,7 @@ function addEntry() {
     placeholder="Calories"
   />`;
   //targetInputContainer.innerHTML += HTMLString;
-  targetInputContainer.insertAdjacentHTML();
+  targetInputContainer.insertAdjacentHTML("beforeend", HTMLString);
 }
 
 
