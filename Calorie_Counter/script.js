@@ -253,8 +253,16 @@ function printName() {
 }
 button.addEventListener('click', printName);
 
-
-
 */
 addEntryButton.addEventListener('click', addEntry);
 
+
+
+/*
+**Great! Now you can add entries without losing your previous inputs.
+Your next step is to write a function that will get the calorie counts from the user's entries.
+Declare a getCaloriesFromInputs function, and give it a parameter called list.
+*/
+function getCaloriesFromInputs(list) {
+
+}
