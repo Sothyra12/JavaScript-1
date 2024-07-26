@@ -264,5 +264,5 @@ Your next step is to write a function that will get the calorie counts from the 
 Declare a getCaloriesFromInputs function, and give it a parameter called list.
 */
 function getCaloriesFromInputs(list) {
-
+  let calories = 0;
 }
