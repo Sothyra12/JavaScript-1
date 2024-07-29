@@ -268,10 +268,16 @@ Declare a getCaloriesFromInputs function, and give it a parameter called list.
 which will return a NodeList. A NodeList is a list of elements like an array. It contains the elements that match the query selector. You will need to loop through these elements in the list.
 In previous steps, you learned how to loop through an array using a for loop. You can also use a for...of loop to loop through an array and a NodeList.
 A for...of loop is used to iterate over elements in an iterable object like an array. The variable declared in the loop represents the current element being iterated over.
+
+
+**The NodeList values you will pass to list will consist of input elements.
+So you will want to look at the value attribute of each element.
+Assign item.value to a const variable called currVal.
+
 */
 function getCaloriesFromInputs(list) {
   let calories = 0;
   for (const item of list){
-    console.log(list);
+    const currVal = item.value;
   }
 }
