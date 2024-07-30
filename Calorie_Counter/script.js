@@ -274,10 +274,17 @@ A for...of loop is used to iterate over elements in an iterable object like an a
 So you will want to look at the value attribute of each element.
 Assign item.value to a const variable called currVal.
 
+
+**You also need to confirm the input is valid.
+Declare an invalidInputMatch variable,
+and assign it the result of calling your
+isInvalidInput function with currVal as the argument.
+
 */
 function getCaloriesFromInputs(list) {
   let calories = 0;
   for (const item of list){
     const currVal = cleanInputString(item.value);
+    let invalidInputMatch = isInvalidInput(currVal);
   }
 }
