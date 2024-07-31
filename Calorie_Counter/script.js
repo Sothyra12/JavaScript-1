@@ -280,11 +280,25 @@ Declare an invalidInputMatch variable,
 and assign it the result of calling your
 isInvalidInput function with currVal as the argument.
 
+
+**Remember that your isInvalidInput function returns String.match,
+which is an array of matches or null if no matches are found.
+In JavaScript, values can either be truthy or falsy.
+A value is truthy if it evaluates to true when converted to a Boolean.
+A value is falsy if it evaluates to false when converted to a Boolean.
+null is an example of a falsy value.
+You need to check if invalidInputMatch is truthy –
+you can do this by passing the variable directly to your if condition
+(without a comparison operator).
+Here's an example of checking the truthiness of helloWorld.
 */
 function getCaloriesFromInputs(list) {
   let calories = 0;
   for (const item of list){
     const currVal = cleanInputString(item.value);
     let invalidInputMatch = isInvalidInput(currVal);
+    if (invalidInputMatch){
+
+    }
   }
 }
