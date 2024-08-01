@@ -298,7 +298,7 @@ function getCaloriesFromInputs(list) {
     const currVal = cleanInputString(item.value);
     let invalidInputMatch = isInvalidInput(currVal);
     if (invalidInputMatch){
-
+      alert(`Invalid Input: ${invalidInputMatch[0]}`);
     }
   }
 }
