@@ -293,12 +293,17 @@ you can do this by passing the variable directly to your if condition
 Here's an example of checking the truthiness of helloWorld.
 
 
-**Browsers have a built in alert() function, 
-which you can use to display a pop-up message to the user. 
+**Browsers have a built in alert() function,
+which you can use to display a pop-up message to the user.
 The message to display is passed as the argument to the alert() function.
-Using a template literal, in your if block, 
-call the alert() function to tell the user "Invalid Input: ", 
+Using a template literal, in your if block,
+call the alert() function to tell the user "Invalid Input: ",
 followed by the first value in the invalidInputMatch array.
+
+**In programming, null is meant to represent the absence of a value.
+In this case, if the user enters an invalid input, you want to alert them and then return null
+to indicate that the function has failed.
+Still within your if block, set isError to true and return null.
 */
 function getCaloriesFromInputs(list) {
   let calories = 0;
@@ -307,6 +312,8 @@ function getCaloriesFromInputs(list) {
     let invalidInputMatch = isInvalidInput(currVal);
     if (invalidInputMatch){
       alert(`Invalid Input: ${invalidInputMatch[0]}`);
+      isError = true;
+      return null;
     }
   }
 }
