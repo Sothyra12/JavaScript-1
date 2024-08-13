@@ -340,9 +340,14 @@ Then, reset your global error flag to false.
 
 Declare a breakfastNumberInputs variable, and give it the value of calling document.querySelectorAll() 
 with the selector #breakfast input[type=number]. This will return any number inputs that are in the #breakfast element.
+
+**Using that same syntax, 
+query your number inputs in the #lunch element 
+and assign them to lunchNumberInputs.
 */
 function calculateCalories(e) {
   e.preventDefault();
   isError = false;
   const breakfastNumberInputs = document.querySelectorAll('#breakfast input[type=number]');
+  const lunchNumberInputs = document.querySelectorAll('#lunch input[type=number]');
 }
