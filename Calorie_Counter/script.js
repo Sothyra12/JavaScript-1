@@ -325,37 +325,45 @@ function getCaloriesFromInputs(list) {
 
 
 /*
-**Now it's time to start putting it all together. Declare an empty calculateCalories function, 
-which takes a parameter named e. This function will be another event listener, 
+**Now it's time to start putting it all together. Declare an empty calculateCalories function,
+which takes a parameter named e. This function will be another event listener,
 so the first argument passed will be the browser event – e is a common name for this parameter.
 
-**You will be attaching this function to the submit event of the form. 
-The submit event is triggered when the form is submitted. 
-The default action of the submit event is to reload the page. 
+**You will be attaching this function to the submit event of the form.
+The submit event is triggered when the form is submitted.
+The default action of the submit event is to reload the page.
 You need to prevent this default action using the preventDefault() method of your e parameter.
-Add a line to your calculateCalories function that calls the preventDefault() method on the e parameter. 
+Add a line to your calculateCalories function that calls the preventDefault() method on the e parameter.
 Then, reset your global error flag to false.
 
 **Your function needs to get the values from the entries the user has added.
 
-Declare a breakfastNumberInputs variable, and give it the value of calling document.querySelectorAll() 
+Declare a breakfastNumberInputs variable, and give it the value of calling document.querySelectorAll()
 with the selector #breakfast input[type=number]. This will return any number inputs that are in the #breakfast element.
 
-**Using that same syntax, 
-query your number inputs in the #lunch element 
+**Using that same syntax,
+query your number inputs in the #lunch element
 and assign them to lunchNumberInputs.
 
-**Following the same pattern, query for your number 
+**Following the same pattern, query for your number
 inputs in the #dinner, #snacks, and #exercise elements.
-Assign them to variables following the naming 
+Assign them to variables following the naming
 scheme of the previous two.
+
+**Now that you have your lists of elements,
+you can pass them to your getCaloriesFromInputs function to extract the calorie total.
+Declare a breakfastCalories variable, and assign it the result of calling getCaloriesFromInputs
+with breakfastNumberInputs as the argument.
 */
 function calculateCalories(e) {
   e.preventDefault();
   isError = false;
+
   const breakfastNumberInputs = document.querySelectorAll('#breakfast input[type=number]');
   const lunchNumberInputs = document.querySelectorAll('#lunch input[type=number]');
   const dinnerNumberInputs = document.querySelectorAll('#dinner input[type=number]');
   const snacksNumberInputs = document.querySelectorAll('#snacks input[type=number]');
   const exerciseNumberInputs = document.querySelectorAll('#exercise input[type=number]');
+
+  const breakfastCalories = getCaloriesFromInputs(breakfastNumberInputs);
 }
