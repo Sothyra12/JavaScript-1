@@ -354,6 +354,10 @@ scheme of the previous two.
 you can pass them to your getCaloriesFromInputs function to extract the calorie total.
 Declare a breakfastCalories variable, and assign it the result of calling getCaloriesFromInputs
 with breakfastNumberInputs as the argument.
+
+**Now declare a lunchCalories variable,
+and give it the value of calling getCaloriesFromInputs
+with your lunchNumberInputs.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -366,4 +370,5 @@ function calculateCalories(e) {
   const exerciseNumberInputs = document.querySelectorAll('#exercise input[type=number]');
 
   const breakfastCalories = getCaloriesFromInputs(breakfastNumberInputs);
+  const lunchCalories = getCaloriesFromInputs(lunchNumberInputs);
 }
