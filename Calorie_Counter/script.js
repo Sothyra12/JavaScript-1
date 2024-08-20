@@ -371,4 +371,7 @@ function calculateCalories(e) {
 
   const breakfastCalories = getCaloriesFromInputs(breakfastNumberInputs);
   const lunchCalories = getCaloriesFromInputs(lunchNumberInputs);
+  const dinnerCalories = getCaloriesFromInputs(dinnerNumberInputs);
+  const snacksCalories = getCaloriesFromInputs(snacksNumberInputs);
+  const exerciseCalories = getCaloriesFromInputs(exerciseNumberInputs);
 }
