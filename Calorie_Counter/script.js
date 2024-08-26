@@ -380,6 +380,10 @@ Declare a surplusOrDeficit variable.
 Then use a ternary operator to set surplusOrDeficit to the string "Surplus" or "Deficit"
 depending on whether remainingCalories is less than 0. If it is less than 0,
 then surplusOrDeficit should be "Surplus". Otherwise, it should be "Deficit".
+
+**You need to construct the HTML string that will be displayed in the output element.
+Start by assigning an empty template literal to the innerHTML property of the output element
+on a new line at the end of the function.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -405,4 +409,5 @@ function calculateCalories(e) {
   const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
   const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
   const surplusOrDeficit = remainingCalories < 0 ? 'Surplus' : 'Deficit';
+  output.innerHTML = ``;
 }
