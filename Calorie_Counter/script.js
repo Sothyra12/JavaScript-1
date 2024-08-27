@@ -384,6 +384,16 @@ then surplusOrDeficit should be "Surplus". Otherwise, it should be "Deficit".
 **You need to construct the HTML string that will be displayed in the output element.
 Start by assigning an empty template literal to the innerHTML property of the output element
 on a new line at the end of the function.
+
+**When you need to lower case a string, you can use the toLowerCase() method.
+This method returns the calling string value converted to lower case.
+Example Code
+const firstName = 'JESSICA';
+console.log(firstName.toLowerCase()); // Output: jessica
+Your output.innerHTML string will need a span element.
+Create that, and give it a class attribute set to the surplusOrDeficit variable.
+Your surplusOrDeficit variable should be converted to lower case using the toLowerCase() method.
+Do not give your span any text yet.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -409,5 +419,5 @@ function calculateCalories(e) {
   const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
   const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
   const surplusOrDeficit = remainingCalories < 0 ? 'Surplus' : 'Deficit';
-  output.innerHTML = ``;
+  output.innerHTML = `<span class="${surplusOrDeficit.toLowerCase()}"></span>`;
 }
