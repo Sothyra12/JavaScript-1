@@ -394,6 +394,16 @@ Your output.innerHTML string will need a span element.
 Create that, and give it a class attribute set to the surplusOrDeficit variable.
 Your surplusOrDeficit variable should be converted to lower case using the toLowerCase() method.
 Do not give your span any text yet.
+
+**When the user has a calorie surplus,
+the remainingCalories value will be negative.
+You don't want to display a negative number in the result string.
+Math.abs() is a built-in JavaScript method that will return the absolute value of a number.
+Example Code
+const num = -5;
+Math.abs(num); // 5
+In your span text, wrap your remainingCalories reference in Math.abs()
+to ensure that the value is positive.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -420,6 +430,6 @@ function calculateCalories(e) {
   const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
   const surplusOrDeficit = remainingCalories < 0 ? 'Surplus' : 'Deficit';
   output.innerHTML = `
-  <span class="${surplusOrDeficit.toLowerCase()}">${remainingCalories} Calorie ${surplusOrDeficit}</span>
+  <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
   `;
 }
