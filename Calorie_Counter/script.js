@@ -404,6 +404,11 @@ const num = -5;
 Math.abs(num); // 5
 In your span text, wrap your remainingCalories reference in Math.abs()
 to ensure that the value is positive.
+
+**Now create a p element with the text budgetCalories Calories Budgeted,
+using interpolation to replace budgetCalories with the appropriate variable.
+This should come after your hr element.
+
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -431,5 +436,7 @@ function calculateCalories(e) {
   const surplusOrDeficit = remainingCalories < 0 ? 'Surplus' : 'Deficit';
   output.innerHTML = `
   <span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
+  <hr>
+  <p>${budgetCalories} Calories Budgeted</p>
   `;
 }
