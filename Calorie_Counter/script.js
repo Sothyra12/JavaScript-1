@@ -409,6 +409,16 @@ to ensure that the value is positive.
 using interpolation to replace budgetCalories with the appropriate variable.
 This should come after your hr element.
 
+**Using the same interpolation syntax, add a second p element with the text consumedCalories
+Calories Consumed and a third with the text exerciseCalories Calories Burned.
+output.innerHTML = `
+  <span class="${surplusOrDeficit.toLowerCase()}">${remainingCalories} Calorie ${surplusOrDeficit}</span>
+  <hr>
+  <p>${budgetCalories} Calories Budgeted</p>
+  <p>${consumedCalories} Calories Consumed</p>
+  <p>${exerciseCalories} Calories Burned</p>
+`;Remember to replace your consumedCalories and exerciseCalories variables with the appropriate values.
+
 */
 function calculateCalories(e) {
   e.preventDefault();
