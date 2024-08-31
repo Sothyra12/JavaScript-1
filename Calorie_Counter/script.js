@@ -419,6 +419,15 @@ output.innerHTML = `
   <p>${exerciseCalories} Calories Burned</p>
 `;Remember to replace your consumedCalories and exerciseCalories variables with the appropriate values.
 
+
+**Finally, you need to make the #output element visible so the user
+can see your text. Your output variable is an Element, which has a classList property.
+This property has a .remove() method, which accepts a string representing the class to remove from the element.
+Example Code
+const paragraphElement = document.getElementById('paragraph');
+paragraphElement.classList.remove('hide');
+Use the .remove() method of the output variable's classList property to remove the hide class.
+Don't forget to place the word hide inside quotes.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -449,4 +458,6 @@ function calculateCalories(e) {
   <hr>
   <p>${budgetCalories} Calories Budgeted</p>
   `;
+
+  output.classList.remove('hide');
 }
