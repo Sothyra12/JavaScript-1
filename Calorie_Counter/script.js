@@ -434,6 +434,12 @@ Don't forget to place the word hide inside quotes.
 you'll see that nothing happens. You still need to mount the event listener.
 Add an event listener to your calorieCounter element.
 The event type should be submit, and the callback function should be calculateCalories.
+
+**Your final feature to add is the ability for a user to clear the form.
+Start by declaring an empty function called clearForm – it should not take any arguments.
+
+**You need to get all of the input containers. Declare an inputContainers variable, and
+assign it to the value of querying the document for all elements with the class input-container.
 */
 function calculateCalories(e) {
   e.preventDefault();
