@@ -459,6 +459,12 @@ Example Code
   console.log(listItemsArray); //Output: (3) [li, li, li]
 Wrap your inputContainers query selector in Array.from().
 Do this on the same line as your declaration.
+
+
+**It is time for another loop. Create a for...of loop
+with a variable called container to iterate through the inputContainers array.
+Inside the loop, set the innerHTML property of the container to an empty string.
+This will clear all of the contents of that input container.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -497,4 +503,7 @@ calorieCounter.addEventListener("submit", calculateCalories);
 
 function clearForm() {
   const inputContainers = Array.from(document.querySelectorAll('.input-container'));
+  for (const container of inputContainers) {
+    container.innerHTML = '';
+  }
 }
