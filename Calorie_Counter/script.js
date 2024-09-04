@@ -465,6 +465,9 @@ Do this on the same line as your declaration.
 with a variable called container to iterate through the inputContainers array.
 Inside the loop, set the innerHTML property of the container to an empty string.
 This will clear all of the contents of that input container.
+
+**After your loop completes, you need to clear the budgetNumberInput.
+Set the value property of budgetNumberInput to an empty string.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -506,4 +509,5 @@ function clearForm() {
   for (const container of inputContainers) {
     container.innerHTML = '';
   }
+  budgetNumberInput.value = '';
 }
