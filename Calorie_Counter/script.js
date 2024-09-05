@@ -480,6 +480,8 @@ The classList property has an .add() method which is the opposite of the
 .remove() method. It accepts a string representing the class to add to the element.
 Add the hide class to your output.
 
+**To complete this project, add an event listener to the clearButton button.
+When the button is clicked, it should call the clearForm function.
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -525,3 +527,5 @@ function clearForm() {
   output.innerText = '';
   output.classList.add('hide');
 }
+
+clearButton.addEventListener("click", clearForm);
