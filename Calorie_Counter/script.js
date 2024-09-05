@@ -468,6 +468,18 @@ This will clear all of the contents of that input container.
 
 **After your loop completes, you need to clear the budgetNumberInput.
 Set the value property of budgetNumberInput to an empty string.
+
+**You also need to clear the output element's text.
+You can do this by setting the innerText property to an empty string.
+The difference between innerText and innerHTML is that innerText will not render HTML elements,
+but will display the tags and content as raw text.
+
+**To finish off this function,
+you need to restore the hide class to the output element.
+The classList property has an .add() method which is the opposite of the
+.remove() method. It accepts a string representing the class to add to the element.
+Add the hide class to your output.
+
 */
 function calculateCalories(e) {
   e.preventDefault();
@@ -510,4 +522,6 @@ function clearForm() {
     container.innerHTML = '';
   }
   budgetNumberInput.value = '';
+  output.innerText = '';
+  output.classList.add('hide');
 }
